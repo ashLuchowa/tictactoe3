@@ -1,6 +1,6 @@
 // gameboard object
 const gameboardMain = (function() {
-    const board = [[1,2,3],[4,5,6],[7,8,9]];
+    const board = [[],[],[]];
     return {board};
 })();
 
@@ -34,14 +34,25 @@ squares.forEach((square) => {
 
             if(e.target.id === 'square1') {
                 gameboardMain.board[0][0] = square.textContent;
-                console.log(gameboardMain.board);
             } else if (e.target.id === 'square2') {
                 gameboardMain.board[0][1] = square.textContent;
-                console.log(gameboardMain.board);
             } else if (e.target.id === 'square3') {
                 gameboardMain.board[0][2] = square.textContent;
-                console.log(gameboardMain.board);
+            } else if (e.target.id === 'square4') {
+                gameboardMain.board[1][0] = square.textContent;
+            } else if (e.target.id === 'square5') {
+                gameboardMain.board[1][1] = square.textContent;
+            } else if (e.target.id === 'square6') {
+                gameboardMain.board[1][2] = square.textContent;
+            } else if (e.target.id === 'square7') {
+                gameboardMain.board[2][0] = square.textContent;
+            } else if (e.target.id === 'square8') {
+                gameboardMain.board[2][1] = square.textContent;
+            } else if (e.target.id === 'square9') {
+                gameboardMain.board[2][2] = square.textContent;
             }
+
+            console.log(gameboardMain.board);
         }
     });
 });
