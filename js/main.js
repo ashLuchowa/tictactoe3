@@ -1,16 +1,20 @@
 // gameboard object
 const gameboardMain = (function() {
-    const board = [['X','X','O'], ['X','O','O'], ['O','X','O']];
+    const board = [['X','X','O'], 
+                   ['X','O','O'],
+                   ['O','X','O']];
     return {board};
 })();
 
 
-// create user object
-const createUser = function(name) {
+// create user factory function
+const createUser = function(name, score) {
     const userName = name;
-    return {userName};
+    const userScore = score;
+    return {userName, userScore};
 }
 
+
 // store players
-const player1 = createUser('Ash');
-const player2 = createUser('Krishty');
+const player1 = createUser('Ash', 0);
+const player2 = createUser('Krishty', 1);

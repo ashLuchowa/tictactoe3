@@ -1,2 +1,25 @@
 // ------------ RESET ------------ //
 @import 'reset';
+
+// ------------ GENERAL ------------ //
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// ------------ GAMEBOARD ------------ //
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid black;
+    height: 300px;
+    width: 300px;
+    .square {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+    }
+}

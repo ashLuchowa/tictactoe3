@@ -50,4 +50,25 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid black;
+  height: 300px;
+  width: 300px;
+}
+.board .square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
 }/*# sourceMappingURL=style.css.map */
