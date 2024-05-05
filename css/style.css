@@ -63,12 +63,12 @@ table {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid black;
-  height: 300px;
-  width: 300px;
 }
 .board .square {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 1px solid black;
+  height: 100px;
+  width: 100px;
 }/*# sourceMappingURL=style.css.map */
