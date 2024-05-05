@@ -32,24 +32,22 @@ squares.forEach((square) => {
                 playerTurn = player1;
             }
 
-            if(e.target.id === 'square1') {
-                gameboardMain.board[0][0] = square.textContent;
-            } else if (e.target.id === 'square2') {
-                gameboardMain.board[0][1] = square.textContent;
-            } else if (e.target.id === 'square3') {
-                gameboardMain.board[0][2] = square.textContent;
-            } else if (e.target.id === 'square4') {
-                gameboardMain.board[1][0] = square.textContent;
-            } else if (e.target.id === 'square5') {
-                gameboardMain.board[1][1] = square.textContent;
-            } else if (e.target.id === 'square6') {
-                gameboardMain.board[1][2] = square.textContent;
-            } else if (e.target.id === 'square7') {
-                gameboardMain.board[2][0] = square.textContent;
-            } else if (e.target.id === 'square8') {
-                gameboardMain.board[2][1] = square.textContent;
-            } else if (e.target.id === 'square9') {
-                gameboardMain.board[2][2] = square.textContent;
+            const squareItem = {
+                'square1': [0,0],
+                'square2': [0,1],
+                'square3': [0,2],
+                'square4': [1,0],
+                'square5': [1,1],
+                'square6': [1,2],
+                'square7': [2,0],
+                'square8': [2,1],
+                'square9': [2,2],
+            }
+
+            const boardSlots = squareItem[e.target.id];
+            [row, column] = boardSlots;
+            if(boardSlots) {
+                gameboardMain.board[row][column] = square.textContent;
             }
 
             console.log(gameboardMain.board);
