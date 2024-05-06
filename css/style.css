@@ -52,19 +52,27 @@ table {
   border-spacing: 0;
 }
 
+.display-controllers {
+  height: 10vh;
+  padding: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
 .container {
-  height: 100vh;
+  height: 89vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.board {
+.container .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid black;
 }
-.board .square {
+.container .board .square {
   display: flex;
   justify-content: center;
   align-items: center;

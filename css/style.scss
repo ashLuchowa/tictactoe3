@@ -2,24 +2,34 @@
 @import 'reset';
 
 // ------------ GENERAL ------------ //
-.container {
-    height: 100vh;
+
+// ------------ DISPLAYCONTROLLERS ------------ //
+.display-controllers {
+    height: 10vh;
+    padding: 0 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid black;
 }
 
 // ------------ GAMEBOARD ------------ //
-.board {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: 1px solid black;
-    .square {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+.container {
+    height: 89vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .board {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         border: 1px solid black;
-        height: 100px;
-        width: 100px;
+        .square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+        }
     }
 }

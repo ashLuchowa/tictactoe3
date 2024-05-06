@@ -66,13 +66,14 @@ const winGame = function(board) {
     };
 
     if(winCondition('X')) {
+        startGame.player1.userScore++;
         console.log('X wins!');
-        return true;
-    }
-
-    if(winCondition('O')) {
+    } else if(winCondition('O')) {
+        startGame.player2.userScore++;
         console.log('O wins!');
     }
+    
+    
 
 }
 
