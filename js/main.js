@@ -18,7 +18,7 @@ const squareHandling = function(playerTurn, player1, player2, board) {
                     playerTurn = player1;
                 }
 
-                updateBoard(e.target.id, square, board);
+                updateBoard(e.target.id, square, board, playerTurn);
             }
         });
     });
@@ -39,14 +39,42 @@ const updateBoard = function(squareId, square, board) {
         'square9': [2,2],
     }
     
-    // save each click into a square slot
+    // Save each click into a square slot
     const boardSlots = squareItem[squareId];
     [row, column] = boardSlots;
     if(boardSlots) {
         board[row][column] = square.textContent;
     }
-    console.log(board);
+
+    // Update after winning
+    winGame(board);
 };
+
+
+// Win game
+const winGame = function(board) {
+    // Win conditions
+    function winCondition(playerId) {
+        return board[0][0] === playerId && board[0][1] === playerId && board[0][2] === playerId ||
+               board[1][0] === playerId && board[1][1] === playerId && board[1][2] === playerId ||
+               board[2][0] === playerId && board[2][1] === playerId && board[2][2] === playerId ||
+               board[0][0] === playerId && board[1][0] === playerId && board[2][0] === playerId ||
+               board[0][1] === playerId && board[1][1] === playerId && board[2][1] === playerId ||
+               board[0][2] === playerId && board[1][2] === playerId && board[2][2] === playerId ||
+               board[0][0] === playerId && board[1][1] === playerId && board[2][2] === playerId ||
+               board[2][0] === playerId && board[1][1] === playerId && board[0][2] === playerId;
+    };
+
+    if(winCondition('X')) {
+        console.log('X wins!');
+        return true;
+    }
+
+    if(winCondition('O')) {
+        console.log('O wins!');
+    }
+
+}
 
 
 // start game
