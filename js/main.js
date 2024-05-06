@@ -1,95 +1,28 @@
 // create user factory function
-const createUser = function(userName, userMarker, userScore) {
-    return {userName, userMarker, userScore};
+function createUser(userName, userMarker) {
+    let userScore = 0;
+    const getScore = () => userScore;
+    const giveScore = () => userScore++;
+    return {userName, userMarker, giveScore, getScore};
 }
 
-// Handling the squares event listeners
-const squareHandling = function(playerTurn, player1, player2, board) {
-    const squares = document.querySelectorAll('.square');
-    
-    squares.forEach((square) => {
-        square.addEventListener('click', (e) => {
-            if(!e.target.textContent) {
-                if(playerTurn === player1) {
-                    square.textContent = player1.userMarker;
-                    playerTurn = player2;
-                } else {
-                    square.textContent = player2.userMarker;
-                    playerTurn = player1;
-                }
-
-                updateBoard(e.target.id, square, board, playerTurn);
-            }
-        });
-    });
-}
+const player1 = createUser('Ash', 'X');
+const player2 = createUser('Krishty', 'O');
+let playerTurn = player1;
 
 
-// Update the game board
-const updateBoard = function(squareId, square, board) {
-    const squareItem = {
-        'square1': [0,0],
-        'square2': [0,1],
-        'square3': [0,2],
-        'square4': [1,0],
-        'square5': [1,1],
-        'square6': [1,2],
-        'square7': [2,0],
-        'square8': [2,1],
-        'square9': [2,2],
-    }
-    
-    // Save each click into a square slot
-    const boardSlots = squareItem[squareId];
-    [row, column] = boardSlots;
-    if(boardSlots) {
-        board[row][column] = square.textContent;
-    }
+// displayControllers
+const displayControllers = ((player1Score, player2Score) => {
+    let currentRound = 0;
 
-    // Update after winning
-    winGame(board);
-};
+    player1Score = document.querySelector('#player1-score');
+    player2Score = document.querySelector('#player2-score');
+    gameRound = document.querySelector('#round-num');
 
+    // update player score
+    player1Score.textContent = player1.getScore();
+    player2Score.textContent = player2.getScore();
 
-// Win game
-const winGame = function(board) {
-    // Win conditions
-    function winCondition(playerId) {
-        return board[0][0] === playerId && board[0][1] === playerId && board[0][2] === playerId ||
-               board[1][0] === playerId && board[1][1] === playerId && board[1][2] === playerId ||
-               board[2][0] === playerId && board[2][1] === playerId && board[2][2] === playerId ||
-               board[0][0] === playerId && board[1][0] === playerId && board[2][0] === playerId ||
-               board[0][1] === playerId && board[1][1] === playerId && board[2][1] === playerId ||
-               board[0][2] === playerId && board[1][2] === playerId && board[2][2] === playerId ||
-               board[0][0] === playerId && board[1][1] === playerId && board[2][2] === playerId ||
-               board[2][0] === playerId && board[1][1] === playerId && board[0][2] === playerId;
-    };
-
-    if(winCondition('X')) {
-        startGame.player1.userScore++;
-        console.log('X wins!');
-    } else if(winCondition('O')) {
-        startGame.player2.userScore++;
-        console.log('O wins!');
-    }
-    
-    
-
-}
-
-
-// start game
-const startGame = (function() {
-    // store players
-    const player1 = createUser('Ash', 'X', 0);
-    const player2 = createUser('Krishty', 'O', 0);
-    let playerTurn = player1;
-
-    // gameboard object
-    const board = [[],[],[]];
-
-    // Handling the squares event listeners
-    squareHandling(playerTurn, player1, player2, board);
-    
-    return {player1, player2, playerTurn, board, squareHandling};
+    // update round
+    gameRound.textContent = currentRound;
 })();
