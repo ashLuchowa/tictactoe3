@@ -6,9 +6,11 @@ function createUser(userMarker) {
     return {userMarker, giveScore, getScore};
 }
 
+
+board = [['','',''],['','',''],['','','']];
 const playerX = createUser('X');
 const playerO = createUser('O');
-let currentRound = 0;
+let currentRound = 1;
 let playerTurn = playerX;
 let gameEnded = false;
 
@@ -22,12 +24,16 @@ function updateScore() {
 
 // reset game
 function resetGame() {
-    //
+    const squares = document.querySelectorAll('.square');
+    board = board = [['','',''],['','',''],['','','']];
+
+    squares.forEach((square) => {
+        square.textContent = '';
+    })
+
+    gameEnded = false;
+    playerTurn = playerX;
 }
-
-
-// Gameboard object
-const board = [['','',''],['','',''],['','','']];
 
 
 // Display markers on each squares
@@ -97,5 +103,6 @@ const winGame = function() {
         playerX.giveScore();
         currentRound++;
         updateScore();
+        resetGame();
     }
 }
