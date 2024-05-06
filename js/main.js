@@ -9,19 +9,22 @@ function createUser(userMarker) {
 const playerX = createUser('X');
 const playerO = createUser('O');
 let playerTurn = playerX;
+let gameEnded = false;
+
+
+// Update player score DOM
+function updateScore() {
+    document.querySelector('#playerx-score').textContent = playerX.getScore();
+    document.querySelector('#playero-score').textContent = playerO.getScore();
+}
 
 
 // DisplayControllers
-const displayControllers = ((playerXScore, playerOScore) => {
+const displayControllers = (() => {
     let currentRound = 0;
 
-    playerXScore = document.querySelector('#playerx-score');
-    playerOScore = document.querySelector('#playero-score');
+    
     gameRound = document.querySelector('#round-num');
-
-    // Update player score
-    playerXScore.textContent = playerX.getScore();
-    playerOScore.textContent = playerO.getScore();
 
     // Update round
     gameRound.textContent = currentRound;
@@ -38,7 +41,7 @@ const squareHandling = (function() {
     
     squares.forEach((square) => {
         square.addEventListener('click', (e) => {
-            if(!e.target.textContent) {
+            if(!e.target.textContent && !gameEnded) {
                 if(playerTurn === playerX) {
                     square.textContent = playerX.userMarker;
                     playerTurn = playerO;
@@ -94,6 +97,9 @@ const winGame = function() {
     };
     
     if(winCondition(playerX.userMarker)) {
-        console.log(`${playerX.userMarker} wins!`);
+        alert(`${playerX.userMarker} wins!`);
+        gameEnded = true;
+        playerX.giveScore();
+        updateScore();
     }
 }
