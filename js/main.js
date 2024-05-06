@@ -98,11 +98,27 @@ const winGame = function() {
     };
     
     if(winCondition(playerX.userMarker)) {
-        alert(`${playerX.userMarker} wins!`);
-        gameEnded = true;
         playerX.giveScore();
-        currentRound++;
         updateScore();
-        resetGame();
+        gameEnded = true;
+        currentRound++;
+        
+        function showWinner() {
+            alert(`${playerX.userMarker} wins!`);
+            resetGame();
+        }
+        setTimeout(showWinner, 120);
+        
+    } else if(winCondition(playerO.userMarker)) {
+        playerO.giveScore();
+        updateScore();
+        gameEnded = true;
+        currentRound++;
+        
+        function showWinner() {
+            alert(`${playerO.userMarker} wins!`);
+            resetGame();
+        }
+        setTimeout(showWinner, 120);
     }
 }
