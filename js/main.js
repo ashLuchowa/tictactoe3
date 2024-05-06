@@ -8,6 +8,7 @@ function createUser(userMarker) {
 
 const playerX = createUser('X');
 const playerO = createUser('O');
+let currentRound = 0;
 let playerTurn = playerX;
 let gameEnded = false;
 
@@ -16,19 +17,13 @@ let gameEnded = false;
 function updateScore() {
     document.querySelector('#playerx-score').textContent = playerX.getScore();
     document.querySelector('#playero-score').textContent = playerO.getScore();
+    document.querySelector('#round-num').textContent = currentRound;
 }
 
-
-// DisplayControllers
-const displayControllers = (() => {
-    let currentRound = 0;
-
-    
-    gameRound = document.querySelector('#round-num');
-
-    // Update round
-    gameRound.textContent = currentRound;
-})();
+// reset game
+function resetGame() {
+    //
+}
 
 
 // Gameboard object
@@ -100,6 +95,7 @@ const winGame = function() {
         alert(`${playerX.userMarker} wins!`);
         gameEnded = true;
         playerX.giveScore();
+        currentRound++;
         updateScore();
     }
 }
